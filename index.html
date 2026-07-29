@@ -1,4 +1,3 @@
-<!doctype html>
 <html lang="id">
   <head>
     <meta charset="UTF-8" />
@@ -1243,8 +1242,8 @@
 
       .footer-top {
         display: grid;
-        grid-template-columns: 1.3fr 1fr 1fr 1fr;
-        gap: 32px;
+        grid-template-columns: 1.25fr 1fr 1fr;
+        gap: 40px;
         padding-bottom: 36px;
         border-bottom: 1px solid var(--footer-line);
       }
@@ -1306,13 +1305,81 @@
         gap: 8px;
         font-size: 15.5px;
         font-weight: 700;
-        margin-bottom: 18px;
+        margin-bottom: 20px;
+        padding-bottom: 12px;
+        border-bottom: 2px solid var(--secondary-color);
         color: var(--footer-text-strong);
       }
 
       .footer-widget h4 i {
         color: var(--secondary-color);
         font-size: 14px;
+      }
+
+      /* ===== Footer content blocks (InfoLembang) ===== */
+      .footer-info-block {
+        margin-bottom: 12px;
+      }
+
+      .footer-info-block:last-child {
+        margin-bottom: 0;
+      }
+
+      .footer-info-block h5 {
+        font-size: 13.5px;
+        font-weight: 700;
+        color: var(--footer-text-strong);
+        margin-bottom: 0;
+      }
+
+      .footer-info-block h5 a {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--footer-text-strong);
+        text-decoration: none;
+        cursor: pointer;
+        transition: var(--transition);
+      }
+
+      .footer-info-block h5 a::before {
+        content: "\f105";
+        font-family: "Font Awesome 6 Free";
+        font-weight: 900;
+        font-size: 11px;
+        color: var(--secondary-color);
+      }
+
+      .footer-info-block h5 a:hover {
+        color: var(--secondary-color);
+      }
+
+      .footer-info-block p {
+        font-size: 13px;
+        line-height: 1.75;
+        color: var(--footer-text);
+      }
+
+      .footer-info-block address {
+        font-style: normal;
+      }
+
+      .footer-info-block .footer-email {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--footer-text-strong);
+        text-decoration: none;
+        font-weight: 600;
+        transition: var(--transition);
+      }
+
+      .footer-info-block .footer-email i {
+        color: var(--secondary-color);
+      }
+
+      .footer-info-block .footer-email:hover {
+        color: var(--secondary-color);
       }
 
       .footer-widget ul {
@@ -1494,6 +1561,9 @@
         .footer-contact ul li {
           justify-content: center;
           text-align: left;
+        }
+        .footer-info-block {
+          text-align: center;
         }
         .footer-bottom {
           justify-content: center;
@@ -1818,6 +1888,49 @@
         font-size: 11px;
         color: rgba(255, 255, 255, 0.4);
         text-align: center;
+      }
+
+      .sidebar-footer-links {
+        padding: 14px 10px 4px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .sidebar-footer-links .sidebar-footer-title {
+        display: block;
+        padding: 8px 12px 4px;
+        font-size: 10.5px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.35);
+      }
+
+      .sidebar-footer-links ul {
+        list-style: none;
+      }
+
+      .sidebar-footer-links ul li a {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 12px;
+        border-radius: 8px;
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.65);
+        text-decoration: none;
+        transition: var(--transition);
+      }
+
+      .sidebar-footer-links ul li a i {
+        width: 14px;
+        text-align: center;
+        font-size: 10px;
+        color: var(--secondary-color);
+      }
+
+      .sidebar-footer-links ul li a:hover {
+        background-color: rgba(255, 255, 255, 0.08);
+        color: var(--white);
       }
 
       .app-content {
@@ -2214,13 +2327,13 @@
           flex-wrap: wrap;
         }
 
-        .social-link-card {
+        .social-links-grid .social-link-card {
           flex: 1 1 calc(50% - 6px);
         }
       }
 
       @media (max-width: 576px) {
-        .social-link-card {
+        .social-links-grid .social-link-card {
           flex: 1 1 100%;
         }
       }
@@ -2399,6 +2512,19 @@
         display: block;
       }
 
+      #footerInfoSection {
+        display: none;
+      }
+
+      body.view-footer-info #homeSection,
+      body.view-footer-info #adminSection {
+        display: none !important;
+      }
+
+      body.view-footer-info #footerInfoSection {
+        display: block;
+      }
+
       #videoDetailSection {
         display: none;
       }
@@ -2410,6 +2536,37 @@
 
       body.view-video-detail #videoDetailSection {
         display: block;
+      }
+
+      /* Ukuran player video di halaman detail video: sedang, tidak full-width */
+      #videoDetailSection .single-video.video-container {
+        max-width: 640px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-top: 0; /* cegah dobel rasio (bentrok dgn padding-bottom bawaan .video-container) supaya rasio tetap 16:9, tidak kepanjangan */
+      }
+
+      /* Footer dibuat lebih ringkas khusus saat halaman detail video dibuka */
+      body.view-video-detail .footer .footer-top {
+        gap: 24px;
+        padding-bottom: 20px;
+      }
+
+      body.view-video-detail .footer-widget h4 {
+        margin-bottom: 10px;
+        padding-bottom: 8px;
+      }
+
+      body.view-video-detail .footer-info-block {
+        margin-bottom: 6px;
+      }
+
+      body.view-video-detail .footer-social {
+        padding: 14px 0;
+      }
+
+      body.view-video-detail .footer-bottom {
+        padding: 12px 0;
       }
 
       body.view-berita .content-grid {
@@ -3601,11 +3758,11 @@
                       href="#"
                       onclick="
                         setView('berita');
-                        filterKategori('Special Report');
+                        filterKategori('Kuliner');
                         closeSidebar();
                         return false;
                       "
-                      >Special Report</a
+                      >Kuliner</a
                     >
                   </li>
                   <li>
@@ -3613,11 +3770,11 @@
                       href="#"
                       onclick="
                         setView('berita');
-                        filterKategori('Sejarah');
+                        filterKategori('Inspirasi');
                         closeSidebar();
                         return false;
                       "
-                      >Sejarah Lembang</a
+                      >Inspirasi</a
                     >
                   </li>
                   <li>
@@ -3625,11 +3782,11 @@
                       href="#"
                       onclick="
                         setView('berita');
-                        filterKategori('Budaya');
+                        filterKategori('Travel');
                         closeSidebar();
                         return false;
                       "
-                      >Budaya & Tradisi</a
+                      >Travel</a
                     >
                   </li>
                   <li>
@@ -3637,11 +3794,11 @@
                       href="#"
                       onclick="
                         setView('berita');
-                        filterKategori('Wisata');
+                        filterKategori('Social');
                         closeSidebar();
                         return false;
                       "
-                      >Wisata Lembang</a
+                      >Social</a
                     >
                   </li>
                   <li>
@@ -3649,11 +3806,11 @@
                       href="#"
                       onclick="
                         setView('berita');
-                        filterKategori('Kabar');
+                        filterKategori('Tech');
                         closeSidebar();
                         return false;
                       "
-                      >Kabar Lembang</a
+                      >Tech</a
                     >
                   </li>
                   <li>
@@ -3661,30 +3818,143 @@
                       href="#"
                       onclick="
                         setView('berita');
-                        filterKategori('Tokoh');
+                        filterKategori('Nyunda');
                         closeSidebar();
                         return false;
                       "
-                      >Tokoh Lembang</a
+                      >Nyunda</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      onclick="
+                        setView('berita');
+                        filterKategori('Olahraga');
+                        closeSidebar();
+                        return false;
+                      "
+                      >Olahraga</a
                     >
                   </li>
                 </ul>
               </li>
-              <li>
-                <a
-                  href="#"
-                  onclick="
-                    setView('home');
-                    showAdmin();
-                    closeSidebar();
-                    return false;
-                  "
-                  ><i class="fas fa-lock nav-icon"></i> Admin</a
-                >
-              </li>
             </ul>
           </div>
         </nav>
+
+        <div class="sidebar-footer-links">
+          <span class="sidebar-footer-title">Tentang InfoLembang</span>
+          <ul>
+            <li>
+              <a
+                href="#"
+                onclick="
+                  showFooterInfoPage('karir');
+                  closeSidebar();
+                  return false;
+                "
+                ><i class="fas fa-chevron-right"></i>Karir</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                onclick="
+                  showFooterInfoPage('kontak');
+                  closeSidebar();
+                  return false;
+                "
+                ><i class="fas fa-chevron-right"></i>Kontak</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                onclick="
+                  showFooterInfoPage('tentangkami');
+                  closeSidebar();
+                  return false;
+                "
+                ><i class="fas fa-chevron-right"></i>Tentang Kami</a
+              >
+            </li>
+          </ul>
+
+          <span class="sidebar-footer-title">Kerja Sama &amp; Pengiklanan</span>
+          <ul>
+            <li>
+              <a
+                href="#"
+                onclick="
+                  showFooterInfoPage('pengiklanan');
+                  closeSidebar();
+                  return false;
+                "
+                ><i class="fas fa-chevron-right"></i>Pengiklanan</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                onclick="
+                  showFooterInfoPage('penerbit');
+                  closeSidebar();
+                  return false;
+                "
+                ><i class="fas fa-chevron-right"></i>Penerbit</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                onclick="
+                  showFooterInfoPage('kontributor');
+                  closeSidebar();
+                  return false;
+                "
+                ><i class="fas fa-chevron-right"></i>Kontributor</a
+              >
+            </li>
+          </ul>
+
+          <span class="sidebar-footer-title">Legal</span>
+          <ul>
+            <li>
+              <a
+                href="#"
+                onclick="
+                  showFooterInfoPage('privasi');
+                  closeSidebar();
+                  return false;
+                "
+                ><i class="fas fa-chevron-right"></i>Kebijakan Privasi</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                onclick="
+                  showFooterInfoPage('syarat');
+                  closeSidebar();
+                  return false;
+                "
+                ><i class="fas fa-chevron-right"></i>Syarat dan Ketentuan</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                onclick="
+                  showFooterInfoPage('pedoman');
+                  closeSidebar();
+                  return false;
+                "
+                ><i class="fas fa-chevron-right"></i>Pedoman Media Siber</a
+              >
+            </li>
+          </ul>
+        </div>
 
         <div class="sidebar-scrim">&copy; <span id="currentYearSidebar"></span> Info Lembang</div>
       </aside>
@@ -3817,7 +4087,7 @@
                     <a href="https://www.youtube.com/@SekitarLembang" class="social-link-card ig" target="_blank" rel="noopener"><i class="fab fa-instagram"></i> Instagram</a>
                     <a href=" https://www.facebook.com/profile.php?id=61581160131978&locale=id_ID" class="social-link-card fb" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i> Facebook</a>
                     <a href=" https://www.tiktok.com/@sekitar.lembang" class="social-link-card tiktok" target="_blank" rel="noopener"><i class="fab fa-tiktok"></i> TikTok</a>
-                    <a href=" https://www.youtube.com/@SekitarLembang " class="social-link-card yt" target="_blank" rel="noopener"><i class="fab fa-youtube"></i> YouTube</a>
+                  <a href="https://www.instagram.com/sekitarlembang/"><i class="fab fa-instagram"></i>instagram</a>
                     <a href="https://x.com/SekitarLembang" class="social-link-card x" target="_blank" rel="noopener"><i class="fab fa-twitter"></i> X (Twitter)</a>
                     <a href="https://whatsapp.com/channel/0029Vb9MTJ6FHWpxZKEP2x1u" class="social-link-card wa" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp Channel</a>
                   </div>
@@ -3889,6 +4159,30 @@
             </div>
           </div>
 
+          <div id="footerInfoSection" style="display: none">
+            <div class="container">
+              <nav class="detail-breadcrumb" id="footerInfoBreadcrumb">
+                <a
+                  href="#"
+                  onclick="
+                    closeFooterInfoPage();
+                    return false;
+                  "
+                  >Beranda</a
+                >
+                <span>/</span>
+                <span class="current" id="footerInfoBreadcrumbTitle"></span>
+              </nav>
+
+              <button class="btn-back" onclick="closeFooterInfoPage()"><i class="fas fa-arrow-left"></i> Kembali ke Beranda</button>
+
+              <article class="detail-article single-article">
+                <h1 class="single-title" id="footerInfoTitle"></h1>
+                <div class="single-content" id="footerInfoContent"></div>
+              </article>
+            </div>
+          </div>
+
           <div id="videoDetailSection" style="display: none">
             <div class="container">
               <nav class="detail-breadcrumb" id="videoDetailBreadcrumb">
@@ -3920,7 +4214,6 @@
                 <h1 class="single-title" id="videoDetailJudul"></h1>
                 <div class="single-meta">
                   <span><i class="far fa-calendar-alt"></i> <span id="videoDetailTanggal"></span></span>
-                  <span><i class="far fa-eye"></i> <span id="videoDetailViews"></span> dilihat</span>
                 </div>
                 <div class="single-video video-container" style="margin: 15px 0 20px">
                   <iframe id="videoDetailFrame" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -3968,7 +4261,6 @@
                       <th>Judul</th>
                       <th>Kategori</th>
                       <th>Tanggal</th>
-                      <th>Views</th>
                       <th>Trending</th>
                       <th>Aksi</th>
                     </tr>
@@ -4032,10 +4324,12 @@
                     <select id="videoKategori" onchange="cmsClearError('grp-videoKategori')">
                       <option value="">-- Pilih Kategori --</option>
                       <option value="Kuliner">Kuliner</option>
-                      <option value="Wisata">Wisata</option>
-                      <option value="Sosial">Sosial</option>
-                      <option value="Event">Event</option>
-                      <option value="Budaya">Budaya</option>
+                      <option value="Inspirasi">Inspirasi</option>
+                      <option value="Travel">Travel</option>
+                      <option value="Social">Social</option>
+                      <option value="Tech">Tech</option>
+                      <option value="Nyunda">Nyunda</option>
+                      <option value="Olahraga">Olahraga</option>
                     </select>
                     <span class="cms-error-text" id="err-videoKategori"><i class="fas fa-circle-exclamation"></i> Kategori wajib dipilih.</span>
                   </div>
@@ -4090,7 +4384,6 @@
                 <h1 class="single-title" id="vpvJudul"></h1>
                 <div class="single-meta">
                   <span><i class="far fa-calendar-alt"></i> <span id="vpvTanggal"></span></span>
-                  <span><i class="far fa-eye"></i> <span id="vpvViews"></span> dilihat</span>
                 </div>
                 <div class="single-video video-container" style="margin: 15px 0 20px">
                   <iframe id="vpvFrame" src="" frameborder="0" allowfullscreen></iframe>
@@ -4129,11 +4422,13 @@
                     <label class="cms-label" for="kategori"><i class="fas fa-tags"></i> Kategori <span class="req">*</span></label>
                     <select id="kategori" onchange="cmsClearError('grp-kategori')">
                       <option value="">-- Pilih Kategori --</option>
-                      <option value="Special Report">Special Report</option>
-                      <option value="Sejarah">Sejarah</option>
-                      <option value="Budaya">Budaya</option>
-                      <option value="Wisata">Wisata</option>
-                      <option value="Kabar">Kabar</option>
+                      <option value="Kuliner">Kuliner</option>
+                      <option value="Inspirasi">Inspirasi</option>
+                      <option value="Travel">Travel</option>
+                      <option value="Social">Social</option>
+                      <option value="Tech">Tech</option>
+                      <option value="Nyunda">Nyunda</option>
+                      <option value="Olahraga">Olahraga</option>
                     </select>
                     <span class="cms-error-text" id="err-kategori"><i class="fas fa-circle-exclamation"></i> Kategori wajib dipilih.</span>
                   </div>
@@ -4313,234 +4608,152 @@
         <footer class="footer">
           <div class="container">
             <div class="footer-top">
-              <div class="footer-widget-col">
-                <div class="footer-logo">
-                  <span class="footer-logo-icon" aria-hidden="true">
-                    <svg viewBox="0 0 278 464" xmlns="http://www.w3.org/2000/svg">
-                      <rect width="278" height="464" rx="56" fill="#0c315a" />
-                      <g transform="translate(40,40)">
-                        <polygon points="130,0 0,91 0,214 51,250 55,193 136,129" fill="#ffffff" />
-                        <polygon points="148,134 143,191 62,255 67,384 198,296 198,167" fill="#ffc107" />
-                      </g>
-                    </svg>
-                  </span>
-                  <div class="footer-logo-text">
-                    <h2>SEKITAR<span> LEMBANG</span></h2>
-                    <span class="footer-logo-tagline">Portal Informasi &amp; Berita Terpercaya</span>
-                    <p class="footer-desc">Portal berita terpercaya seputar wisata, kuliner, budaya, dan informasi terkini di Lembang.</p>
-                  </div>
+              <div class="footer-widget footer-widget-about">
+                <h4><i class="fas fa-newspaper"></i> Tentang InfoLembang</h4>
+
+                <div class="footer-info-block">
+                  <h5>
+                    <a
+                      href="#"
+                      onclick="
+                        showFooterInfoPage('karir');
+                        return false;
+                      "
+                      >Karir</a
+                    >
+                  </h5>
+                </div>
+
+                <div class="footer-info-block">
+                  <h5>
+                    <a
+                      href="#"
+                      onclick="
+                        showFooterInfoPage('kontak');
+                        return false;
+                      "
+                      >Kontak</a
+                    >
+                  </h5>
+                </div>
+
+                <div class="footer-info-block">
+                  <h5>
+                    <a
+                      href="#"
+                      onclick="
+                        showFooterInfoPage('tentangkami');
+                        return false;
+                      "
+                      >Tentang Kami</a
+                    >
+                  </h5>
                 </div>
               </div>
 
               <div class="footer-widget">
-                <h4><i class="fas fa-folder-open"></i> Kategori</h4>
-                <ul>
-                  <li>
+                <h4><i class="fas fa-handshake"></i> Kerja Sama &amp; Pengiklanan</h4>
+
+                <div class="footer-info-block">
+                  <h5>
                     <a
                       href="#"
                       onclick="
-                        showHome();
-                        filterKategori('Wisata');
+                        showFooterInfoPage('pengiklanan');
                         return false;
                       "
-                      ><i class="fas fa-mountain-sun"></i> Wisata</a
+                      >Pengiklanan</a
                     >
-                  </li>
-                  <li>
+                  </h5>
+                </div>
+
+                <div class="footer-info-block">
+                  <h5>
                     <a
                       href="#"
                       onclick="
-                        showHome();
-                        filterKategori('Kuliner');
+                        showFooterInfoPage('penerbit');
                         return false;
                       "
-                      ><i class="fas fa-utensils"></i> Kuliner</a
+                      >Penerbit</a
                     >
-                  </li>
-                  <li>
+                  </h5>
+                </div>
+
+                <div class="footer-info-block">
+                  <h5>
                     <a
                       href="#"
                       onclick="
-                        showHome();
-                        filterKategori('Event');
+                        showFooterInfoPage('kontributor');
                         return false;
                       "
-                      ><i class="fas fa-calendar-days"></i> Acara</a
+                      >Kontributor</a
                     >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      onclick="
-                        showHome();
-                        filterKategori('Pendidikan');
-                        return false;
-                      "
-                      ><i class="fas fa-graduation-cap"></i> Pendidikan</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      onclick="
-                        showHome();
-                        filterKategori('Pemerintahan');
-                        return false;
-                      "
-                      ><i class="fas fa-landmark"></i> Pemerintahan</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      onclick="
-                        showHome();
-                        filterKategori('Budaya');
-                        return false;
-                      "
-                      ><i class="fas fa-leaf"></i> Budaya</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      onclick="
-                        showHome();
-                        filterKategori('UMKM');
-                        return false;
-                      "
-                      ><i class="fas fa-shop"></i> UMKM</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      onclick="
-                        showHome();
-                        filterKategori('Teknologi');
-                        return false;
-                      "
-                      ><i class="fas fa-microchip"></i> Teknologi</a
-                    >
-                  </li>
-                </ul>
+                  </h5>
+                </div>
               </div>
 
               <div class="footer-widget">
-                <h4><i class="fas fa-bolt"></i> Tautan Cepat</h4>
-                <ul>
-                  <li>
-                    <a
-                      href="#"
-                      onclick="
-                        showHome();
-                        setView('home');
-                        return false;
-                      "
-                      ><i class="fas fa-house"></i> Beranda</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      onclick="
-                        showHome();
-                        setView('berita');
-                        return false;
-                      "
-                      ><i class="fas fa-newspaper"></i> Berita</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      onclick="
-                        showHome();
-                        setView('video');
-                        return false;
-                      "
-                      ><i class="fas fa-circle-play"></i> Video</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      onclick="
-                        showAbout();
-                        return false;
-                      "
-                      ><i class="fas fa-circle-info"></i> Tentang Kami</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      onclick="
-                        showKontak();
-                        return false;
-                      "
-                      ><i class="fas fa-envelope"></i> Hubungi Kami</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      onclick="
-                        showFooterInfo('privasi');
-                        return false;
-                      "
-                      ><i class="fas fa-shield-halved"></i> Kebijakan Privasi</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      onclick="
-                        showFooterInfo('pedoman');
-                        return false;
-                      "
-                      ><i class="fas fa-scale-balanced"></i> Pedoman Media Siber</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      onclick="
-                        showFooterInfo('sitemap');
-                        return false;
-                      "
-                      ><i class="fas fa-sitemap"></i> Peta Situs</a
-                    >
-                  </li>
-                </ul>
-              </div>
+                <h4><i class="fas fa-scale-balanced"></i> Legal</h4>
 
-              <div class="footer-widget footer-contact">
-                <h4><i class="fas fa-phone"></i> Kontak</h4>
-                <ul>
-                  <li><i class="fas fa-location-dot"></i> Lembang, Kabupaten Bandung Barat, Jawa Barat</li>
-                  <li><i class="fas fa-envelope"></i> redaksi@infolembang.id</li>
-                  <li><i class="fab fa-whatsapp"></i> +62 812-3456-7890</li>
-                  <li><i class="fas fa-clock"></i> Setiap Hari, 08.00 – 21.00 WIB</li>
-                </ul>
+                <div class="footer-info-block">
+                  <h5>
+                    <a
+                      href="#"
+                      onclick="
+                        showFooterInfoPage('privasi');
+                        return false;
+                      "
+                      >Kebijakan Privasi</a
+                    >
+                  </h5>
+                </div>
+
+                <div class="footer-info-block">
+                  <h5>
+                    <a
+                      href="#"
+                      onclick="
+                        showFooterInfoPage('syarat');
+                        return false;
+                      "
+                      >Syarat dan Ketentuan</a
+                    >
+                  </h5>
+                </div>
+
+                <div class="footer-info-block">
+                  <h5>
+                    <a
+                      href="#"
+                      onclick="
+                        showFooterInfoPage('pedoman');
+                        return false;
+                      "
+                      >Pedoman Media Siber</a
+                    >
+                  </h5>
+                </div>
               </div>
             </div>
 
             <div class="footer-social">
-              <a href="#" class="fb-icon" onclick="return false;" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-              <a href="#" class="ig-icon" onclick="return false;" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-              <a href="#" class="tiktok-icon" onclick="return false;" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-              <a href="#" class="yt-icon" onclick="return false;" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-              <a href="#" class="x-icon" onclick="return false;" aria-label="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
+              <a href="https://www.youtube.com/@SekitarLembang" class="social-link-card ig" target="_blank" rel="noopener"><i class="fab fa-instagram"></i> </a>
+              <a href=" https://www.facebook.com/profile.php?id=61581160131978&locale=id_ID" class="social-link-card fb" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
+              <a href=" https://www.tiktok.com/@sekitar.lembang" class="social-link-card tiktok" target="_blank" rel="noopener"><i class="fab fa-tiktok"></i></a>
+                  <a href="https://www.instagram.com/sekitarlembang/"><i class="fab fa-instagram"></i></a>
+              <a href="https://x.com/SekitarLembang" class="social-link-card x" target="_blank" rel="noopener"><i class="fab fa-twitter"></i></a>
+              <a href="https://whatsapp.com/channel/0029Vb9MTJ6FHWpxZKEP2x1u" class="social-link-card wa" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a>
             </div>
 
             <div class="footer-bottom">
-              <p>&copy; <span id="currentYear"></span> Sekitar Lembang. Semua Hak Dilindungi Undang-undang.</p>
+              <p>&copy; <span id="currentYear"></span> InfoLembang. All Rights Reserved.</p>
               <div class="footer-bottom-links">
                 <a
                   href="#"
                   onclick="
-                    showFooterInfo('privasi');
+                    showFooterInfoPage('privasi');
                     return false;
                   "
                   >Kebijakan Privasi</a
@@ -4549,28 +4762,19 @@
                 <a
                   href="#"
                   onclick="
-                    showFooterInfo('disclaimer');
+                    showFooterInfoPage('syarat');
                     return false;
                   "
-                  >Penafian</a
+                  >Syarat &amp; Ketentuan</a
                 >
                 <span class="dot-sep">•</span>
                 <a
                   href="#"
                   onclick="
-                    showKontak();
+                    showFooterInfoPage('pedoman');
                     return false;
                   "
-                  >Kontak</a
-                >
-                <span class="dot-sep">•</span>
-                <a
-                  href="#"
-                  onclick="
-                    showFooterInfo('sitemap');
-                    return false;
-                  "
-                  >Peta Situs</a
+                  >Pedoman Media Siber</a
                 >
               </div>
             </div>
@@ -4864,6 +5068,14 @@
       }
 
       function showHome() {
+        // Bersihkan state halaman detail (video/berita) supaya gak nyangkut waktu pindah
+        // menu dari sidebar sementara lagi buka detail video/berita.
+        document.body.classList.remove("view-video-detail", "view-detail");
+        document.getElementById("videoDetailSection").style.display = "none";
+        document.getElementById("detailBeritaSection").style.display = "none";
+        currentDetailVideo = null;
+        currentDetailBerita = null;
+
         document.getElementById("homeSection").style.display = "block";
         document.getElementById("adminSection").style.display = "none";
         document.querySelectorAll(".nav-list a").forEach((a) => a.classList.remove("active"));
@@ -4894,14 +5106,6 @@
         return `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
       }
 
-      function incrementVideoViews(id) {
-        const videos = getVideos();
-        const item = videos.find((v) => v.id === id);
-        if (!item) return;
-        item.views = (item.views || 0) + 1;
-        saveVideos(videos);
-      }
-
       // Kartu video (dipakai bersama oleh slider "Video Terbaru" & "Video Trending")
       function buildVideoSlideCard(item) {
         const trendingBadge = item.trending ? `<span class="video-trending-badge"><i class="fas fa-fire"></i> Trending</span>` : "";
@@ -4917,7 +5121,6 @@
               <h4 style="margin: 4px 0 8px; color: var(--heading-color); font-size: 16px; line-height: 1.4">${item.title}</h4>
               <div class="video-meta">
                 <span><i class="far fa-calendar-alt"></i> ${formatTanggal(item.date)}</span>
-                <span class="video-views-count"><i class="far fa-eye"></i> ${item.views || 0}</span>
               </div>
             </div>
           </div>
@@ -4937,7 +5140,7 @@
             </div>
             <div class="article-content">
               <h4>${item.title}</h4>
-              <div class="video-grid-meta"><i class="far fa-calendar-alt"></i> ${formatTanggal(item.date)}<span class="video-views-count"><i class="far fa-eye"></i> ${item.views || 0}</span></div>
+              <div class="video-grid-meta"><i class="far fa-calendar-alt"></i> ${formatTanggal(item.date)}</div>
               <a href="#" class="read-more" onclick="event.stopPropagation(); showVideoDetail(${item.id}); return false;">Tonton <i class="fas fa-arrow-right"></i></a>
             </div>
           </article>
@@ -4996,30 +5199,26 @@
         const item = getVideoById(id);
         if (!item) return;
 
-        incrementVideoViews(item.id);
-        const updated = getVideoById(id);
-
-        document.getElementById("videoDetailKategori").textContent = updated.category;
-        document.getElementById("videoDetailJudul").textContent = updated.title;
-        document.getElementById("videoDetailTanggal").textContent = formatTanggal(updated.date);
-        document.getElementById("videoDetailViews").textContent = updated.views || 0;
-        document.getElementById("videoDetailDeskripsi").textContent = updated.description;
-        document.getElementById("videoDetailBreadcrumbTitle").textContent = updated.title;
+        document.getElementById("videoDetailKategori").textContent = item.category;
+        document.getElementById("videoDetailJudul").textContent = item.title;
+        document.getElementById("videoDetailTanggal").textContent = formatTanggal(item.date);
+        document.getElementById("videoDetailDeskripsi").textContent = item.description;
+        document.getElementById("videoDetailBreadcrumbTitle").textContent = item.title;
 
         const frameEl = document.getElementById("videoDetailFrame");
-        const converted = processYoutubeUrl(updated.youtubeUrl, frameEl);
+        const converted = processYoutubeUrl(item.youtubeUrl, frameEl);
         if (!converted) frameEl.src = "";
 
-        renderVideoTerkait(updated);
+        renderVideoTerkait(item);
 
         document.getElementById("homeSection").style.display = "none";
         document.getElementById("adminSection").style.display = "none";
         document.getElementById("videoDetailSection").style.display = "block";
         document.body.classList.add("view-video-detail");
-        currentDetailVideo = updated;
+        currentDetailVideo = item;
 
         try {
-          history.pushState({ videoId: updated.id }, "", "#video/" + updated.id);
+          history.pushState({ videoId: item.id }, "", "#video/" + item.id);
         } catch (e) {}
 
         window.scrollTo({ top: 0, behavior: "smooth" });
@@ -5061,7 +5260,7 @@
         const tbody = document.getElementById("videoTableBody");
         if (!tbody) return;
         if (videos.length === 0) {
-          tbody.innerHTML = `<tr><td colspan="7" style="text-align:center;color:var(--text-light)">Belum ada video. Klik "Tambah Video" untuk menambahkan video baru.</td></tr>`;
+          tbody.innerHTML = `<tr><td colspan="6" style="text-align:center;color:var(--text-light)">Belum ada video. Klik "Tambah Video" untuk menambahkan video baru.</td></tr>`;
           return;
         }
         let html = "";
@@ -5072,7 +5271,6 @@
                     <td>${item.title}</td>
                     <td>${item.category}</td>
                     <td>${formatTanggal(item.date)}</td>
-                    <td>${item.views || 0}</td>
                     <td>${trendingBadge}</td>
                     <td>
                       <div class="cms-table-actions">
@@ -5192,7 +5390,7 @@
         return valid;
       }
 
-      function simpanVideoCms() {
+      async function simpanVideoCms() {
         if (!cmsValidateVideoForm()) {
           cmsShowToast("Lengkapi semua field yang wajib diisi.", "error");
           return;
@@ -5203,48 +5401,40 @@
         const originalHtml = btn.innerHTML;
         btn.innerHTML = '<span class="cms-spinner"></span> Menyimpan...';
 
-        setTimeout(() => {
-          const id = document.getElementById("videoId").value;
-          const rawUrl = document.getElementById("videoUrlInput").value.trim();
-          const result = cmsCurrentVideoData || processYoutubeUrl(rawUrl, null);
-          if (!result) {
-            btn.classList.remove("cms-btn-loading");
-            btn.innerHTML = originalHtml;
-            cmsShowToast("Link Video YouTube tidak valid.", "error");
-            return;
+        const id = document.getElementById("videoId").value;
+        const rawUrl = document.getElementById("videoUrlInput").value.trim();
+        const result = cmsCurrentVideoData || processYoutubeUrl(rawUrl, null);
+
+        if (!result) {
+          btn.classList.remove("cms-btn-loading");
+          btn.innerHTML = originalHtml;
+          cmsShowToast("Link Video YouTube tidak valid.", "error");
+          return;
+        }
+
+        const newData = {
+          title: document.getElementById("videoJudul").value.trim(),
+          category: document.getElementById("videoKategori").value,
+          description: document.getElementById("videoDeskripsi").value.trim(),
+          youtubeUrl: rawUrl,
+          videoId: result.videoId,
+          thumbnail: buildYoutubeThumbnail(result.videoId),
+          date: document.getElementById("videoTanggal").value,
+          trending: document.getElementById("videoTrending").value === "true",
+        };
+
+        try {
+          const { db, doc, setDoc, updateDoc, serverTimestamp } = window.fb;
+
+          if (id) {
+            await updateDoc(doc(db, "videos", String(id)), newData);
+          } else {
+            const existingIds = _videosCache.map((v) => Number(v.id)).filter((n) => !isNaN(n));
+            const newId = existingIds.length ? Math.max(...existingIds) + 1 : 1;
+            await setDoc(doc(db, "videos", String(newId)), { ...newData, views: 0, createdAt: serverTimestamp() });
           }
 
-          const videos = getVideos();
-          const newData = {
-            title: document.getElementById("videoJudul").value.trim(),
-            category: document.getElementById("videoKategori").value,
-            description: document.getElementById("videoDeskripsi").value.trim(),
-            youtubeUrl: rawUrl,
-            videoId: result.videoId,
-            thumbnail: buildYoutubeThumbnail(result.videoId),
-            date: document.getElementById("videoTanggal").value,
-            trending: document.getElementById("videoTrending").value === "true",
-          };
-
-          try {
-            if (id) {
-              const idx = videos.findIndex((v) => v.id == id);
-              if (idx !== -1) videos[idx] = { ...videos[idx], ...newData };
-            } else {
-              const existingIds = videos.map((v) => Number(v.id)).filter((n) => !isNaN(n));
-              const newId = existingIds.length ? Math.max(...existingIds) + 1 : 1;
-              videos.push({ id: newId, views: 0, ...newData });
-            }
-            saveVideos(videos);
-          } catch (e) {
-            console.error("Gagal menyimpan video:", e);
-            btn.classList.remove("cms-btn-loading");
-            btn.innerHTML = originalHtml;
-            const message = (e && e.message) || "";
-            const isQuotaError = (e && e.name === "QuotaExceededError") || e?.code === 22 || e?.code === 1014 || /quota/i.test(message);
-            cmsShowToast(isQuotaError ? "Penyimpanan penuh. Gagal menyimpan video." : "Gagal menyimpan video: " + (message || "Terjadi kesalahan."), "error");
-            return;
-          }
+          await muatUlangVideosCache(true);
 
           btn.classList.remove("cms-btn-loading");
           btn.innerHTML = originalHtml;
@@ -5256,27 +5446,39 @@
           renderVideoGrid();
 
           cmsShowToast(id ? "Video berhasil diperbarui!" : "Video baru berhasil dipublikasikan!", "success");
-        }, 400);
+        } catch (error) {
+          console.error("Gagal menyimpan video:", error);
+          btn.classList.remove("cms-btn-loading");
+          btn.innerHTML = originalHtml;
+          cmsShowToast("Gagal menyimpan video: " + (error.message || "Terjadi kesalahan."), "error");
+        }
       }
 
-      function hapusVideo(id) {
-        if (confirm("Apakah Anda yakin ingin menghapus video ini?")) {
-          saveVideos(getVideos().filter((v) => v.id !== id));
+      async function hapusVideo(id) {
+        if (!confirm("Apakah Anda yakin ingin menghapus video ini?")) return;
+
+        const { db, doc, deleteDoc } = window.fb;
+
+        try {
+          await deleteDoc(doc(db, "videos", String(id)));
+          await muatUlangVideosCache(true);
+
           renderVideoTable();
           renderVideoTerbaru();
           renderVideoTrending();
           renderVideoGrid();
           cmsShowToast("Video berhasil dihapus.", "success");
+        } catch (error) {
+          console.error("Gagal menghapus video:", error);
+          alert("Gagal menghapus video: " + error.message);
         }
       }
-
       function cmsPreviewVideo(id) {
         const item = getVideoById(id);
         if (!item) return;
         document.getElementById("vpvKategori").textContent = item.category;
         document.getElementById("vpvJudul").textContent = item.title;
         document.getElementById("vpvTanggal").textContent = formatTanggal(item.date);
-        document.getElementById("vpvViews").textContent = item.views || 0;
         document.getElementById("vpvDeskripsi").textContent = item.description;
         processYoutubeUrl(item.youtubeUrl, document.getElementById("vpvFrame"));
         document.getElementById("videoPreviewModal").style.display = "block";
@@ -5386,13 +5588,17 @@
         const item = getBerita().find((b) => b.id === id);
         if (!item) return;
 
-        incrementBeritaViews(item.id);
-
+        const sudahDilihat = getSudahDilihatSet();
+        if (!sudahDilihat.has(item.id)) {
+          tandaiSudahDilihat(item.id);
+          item.views = (item.views || 0) + 1;
+          tambahViewsKeFirestore(item.id);
+        }
         document.getElementById("detailKategori").textContent = item.kategori;
         document.getElementById("detailJudul").textContent = item.judul;
         document.getElementById("detailPenulis").textContent = item.penulis;
         document.getElementById("detailTanggal").textContent = formatTanggal(item.tanggal);
-        document.getElementById("detailViews").textContent = getBeritaViews(item.id);
+        document.getElementById("detailViews").textContent = item.views || 0;
         document.getElementById("detailIsi").innerHTML = item.isi;
         document.getElementById("detailBreadcrumbTitle").textContent = item.judul;
 
@@ -5466,18 +5672,30 @@
         container.innerHTML = html || "<p>Belum ada berita terkait.</p>";
       }
 
-      // Hitungan dilihat (fitur baru, tersimpan terpisah dari data berita utama)
-      function getBeritaViewsMap() {
-        return JSON.parse(localStorage.getItem("beritaViews")) || {};
+      // Hitungan dilihat GLOBAL (Firestore) — anti double-count kalau di-refresh browser yang sama
+      const VIEWED_KEY = "beritaSudahDilihat";
+
+      function getSudahDilihatSet() {
+        try {
+          return new Set(JSON.parse(localStorage.getItem(VIEWED_KEY)) || []);
+        } catch (e) {
+          return new Set();
+        }
       }
-      function getBeritaViews(id) {
-        const map = getBeritaViewsMap();
-        return map[id] || 0;
+
+      function tandaiSudahDilihat(id) {
+        const set = getSudahDilihatSet();
+        set.add(id);
+        localStorage.setItem(VIEWED_KEY, JSON.stringify([...set]));
       }
-      function incrementBeritaViews(id) {
-        const map = getBeritaViewsMap();
-        map[id] = (map[id] || 0) + 1;
-        localStorage.setItem("beritaViews", JSON.stringify(map));
+
+      async function tambahViewsKeFirestore(id) {
+        try {
+          const { db, doc, updateDoc, increment } = window.fb;
+          await updateDoc(doc(db, "berita", String(id)), { views: increment(1) });
+        } catch (error) {
+          console.error("Gagal update views ke server:", error);
+        }
       }
 
       // Tombol Share (UI + fungsi dasar; tidak mengubah data/CRUD berita)
@@ -5555,6 +5773,88 @@
         document.getElementById("infoModalContent").innerHTML = content[type] || content.privasi;
         document.getElementById("infoModal").style.display = "block";
       }
+
+      function showFooterInfoPage(type) {
+        const content = {
+          karir: {
+            title: "Karir",
+            html: `<p>Bergabunglah bersama kami untuk memajukan jurnalisme lokal di Lembang. Saat ini kami belum membuka lowongan baru, namun Anda dapat mengirimkan CV Anda ke <a class="footer-email" href="sekitarlembang.official@gmail.com"><i class="fas fa-envelope"></i>sekitarlembang.official@gmail.com</a> untuk kesempatan di masa depan.</p>`,
+          },
+          kontak: {
+            title: "Kontak",
+            html: `<p>Apakah Anda memiliki pertanyaan, saran, kritik, atau penawaran kerja sama periklanan dengan InfoLembang? Silakan hubungi tim redaksi dan manajemen kami melalui kontak di bawah ini:</p>
+                   <p><strong>Alamat Kantor Redaksi:</strong><br /><address>[Masukkan Alamat Kantor Jalan di Lembang], Kecamatan Lembang, Kabupaten Bandung Barat, Jawa Barat</address></p>
+                   <p><strong>Email:</strong><br /><a class="footer-email" href="sekitarlembang.official@gmail.com"><i class="fas fa-envelope"></i>sekitarlembang.official@gmail.com</a></p>`,
+          },
+          tentangkami: {
+            title: "Tentang Kami",
+            html: `<p>InfoLembang adalah portal berita lokal terpercaya di Lembang, Jawa Barat. Kami berkomitmen untuk menyajikan berita dan informasi yang akurat, berimbang, objektif, dan tepercaya untuk seluruh warga Lembang serta masyarakat luas.</p>`,
+          },
+          pengiklanan: {
+            title: "Pengiklanan",
+            html: `<p>Jangkau jutaan warga Lembang dan sekitarnya dengan beriklan di platform kami. Kami menyediakan berbagai ruang iklan seperti banner, native ads, dan artikel sponsor. Hubungi <a class="footer-email" href="sekitarlembang.official@gmail.com"><i class="fas fa-envelope"></i>sekitarlembang.official@gmail.com</a> untuk penawaran selengkapnya.</p>`,
+          },
+          penerbit: {
+            title: "Penerbit",
+            html: `<p>Website InfoLembang diterbitkan dan dikelola oleh PT Info Lembang Media yang terdaftar dan tunduk pada peraturan perundang-undangan di Indonesia.</p>`,
+          },
+          kontributor: {
+            title: "Kontributor",
+            html: `<p>Anda suka menulis? Mari menjadi kontributor di InfoLembang dan bagikan tulisan serta reportase warga ke audiens yang lebih luas. Kirimkan portofolio dan contoh tulisan Anda ke <a class="footer-email" href="mailto:sekitarlembang.official@gmail.com"><i class="fas fa-envelope"></i>sekitarlembang.official@gmail.com</a>.</p>`,
+          },
+          privasi: {
+            title: "Kebijakan Privasi",
+            html: `<p>Di InfoLembang, privasi pengunjung kami adalah hal yang sangat penting bagi kami. Dokumen kebijakan privasi ini menguraikan jenis informasi pribadi yang diterima dan dikumpulkan oleh InfoLembang serta cara penggunaannya.</p>`,
+          },
+          syarat: {
+            title: "Syarat dan Ketentuan",
+            html: `<p>Selamat datang di InfoLembang. Dengan mengakses dan menggunakan situs web ini, Anda setuju untuk mematuhi dan terikat oleh syarat dan ketentuan penggunaan berikut.</p>`,
+          },
+          pedoman: {
+            title: "Pedoman Media Siber",
+            html: `<p>InfoLembang mematuhi sepenuhnya Pedoman Pemberitaan Media Siber yang dirumuskan oleh Dewan Pers Indonesia untuk menjaga integritas jurnalistik siber di tanah air.</p>`,
+          },
+        };
+        const data = content[type] || content.privasi;
+
+        document.getElementById("footerInfoTitle").textContent = data.title;
+        document.getElementById("footerInfoBreadcrumbTitle").textContent = data.title;
+        document.getElementById("footerInfoContent").innerHTML = data.html;
+
+        document.body.classList.remove("view-video-detail", "view-detail");
+        document.getElementById("videoDetailSection").style.display = "none";
+        document.getElementById("detailBeritaSection").style.display = "none";
+
+        document.getElementById("homeSection").style.display = "none";
+        document.getElementById("adminSection").style.display = "none";
+        document.getElementById("footerInfoSection").style.display = "block";
+        document.body.classList.add("view-footer-info");
+
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      function closeFooterInfoPage() {
+        document.getElementById("footerInfoSection").style.display = "none";
+        document.body.classList.remove("view-footer-info");
+        showHome();
+      }
+
+      // Kalau halaman footer (Karir/Kontak/Legal/dsb) sedang terbuka, dan user
+      // klik link navigasi lain (sidebar, bottom-nav, header), bersihkan dulu
+      // state halaman footer supaya section yang dituju bisa aktif dengan benar.
+      document.addEventListener(
+        "click",
+        function (e) {
+          if (!document.body.classList.contains("view-footer-info")) return;
+          const link = e.target.closest("a");
+          if (!link) return;
+          const inline = link.getAttribute("onclick") || "";
+          if (inline.includes("showFooterInfoPage") || inline.includes("closeFooterInfoPage")) return;
+          document.body.classList.remove("view-footer-info");
+          document.getElementById("footerInfoSection").style.display = "none";
+        },
+        true,
+      );
 
       let currentSlide = 0,
         slideInterval;
@@ -6133,7 +6433,9 @@
             status: document.getElementById("cmsStatus").value,
             trending: document.getElementById("cmsTrending").value === "true",
           };
-
+          if (!id) {
+            newData.views = 0;
+          }
           const { db, doc, setDoc, updateDoc, serverTimestamp } = window.fb;
 
           if (id) {
@@ -6319,21 +6621,17 @@
       }
 
       document.addEventListener("DOMContentLoaded", () => {
-        // Cek apakah admin sebelumnya sedang login (localStorage tetap ada meski tab/browser ditutup atau di-refresh)
-        if (localStorage.getItem("adminLoggedIn") === "true") {
-          showAdmin(); // Jika ya, langsung buka kembali dashboard admin
-        } else {
-          renderBeritaPopuler();
-          setView("home"); // Jika tidak, tampilkan halaman utama seperti biasa
-        }
+        // Selalu tampilkan halaman utama dulu. Kalau admin memang masih login (sesi Firebase-nya
+        // masih valid), listener onAuthStateChanged di bawah yang akan otomatis membuka dashboard
+        // setelah Firebase selesai memverifikasi. Ini menghindari status "nyangkut" karena localStorage
+        // yang tidak sinkron dengan status login Firebase yang sebenarnya.
+        renderBeritaPopuler();
+        setView("home");
         document.getElementById("currentYearSidebar").textContent = new Date().getFullYear();
 
-        // Buka langsung ke halaman detail jika ada #berita/<id> di URL (mis. dari link share)
-        const match = window.location.hash.match(/^#berita\/(\d+)/);
-        if (match) {
-          const idAwal = parseInt(match[1], 10);
-          if (getBerita().some((b) => b.id === idAwal)) showBeritaDetail(idAwal);
-        }
+        // Catatan: pengecekan #berita/<id> DIPINDAH ke listener "firebase-ready" di bawah,
+        // karena data berita diambil dari Firestore secara async — kalau dicek di sini,
+        // getBerita() masih kosong dan deep link dari Copy Link gagal kebuka.
 
         // Buka langsung ke halaman detail video jika ada #video/<id> di URL (mis. dari link share)
         const matchVideo = window.location.hash.match(/^#video\/(\d+)/);
@@ -6381,7 +6679,7 @@
 
     <script type="module">
       import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-      import { getFirestore, collection, addDoc, setDoc, getDocs, query, orderBy, limit, serverTimestamp, deleteDoc, doc, updateDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+      import { getFirestore, collection, addDoc, setDoc, getDocs, query, orderBy, limit, serverTimestamp, deleteDoc, doc, updateDoc, increment } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
       import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
       const firebaseConfig = {
         apiKey: "AIzaSyCnIz71btKl34SY7wKbOGH1XDG9jQ-mzrM",
@@ -6413,11 +6711,11 @@
         deleteDoc,
         doc,
         updateDoc,
+        increment,
         signInWithPopup,
         signOut,
         onAuthStateChanged,
       };
-
       window.dispatchEvent(new Event("firebase-ready"));
     </script>
     <script>
@@ -6489,6 +6787,49 @@
         _beritaCache = await getBeritaFromFirestore(forceRefresh);
       }
 
+      let _videosCache = [];
+
+      async function getVideosFromFirestore(forceRefresh = false) {
+        const CACHE_KEY_VIDEOS = "cache_videos_v1";
+        const CACHE_TTL_MS = 5 * 60 * 1000;
+
+        if (!forceRefresh) {
+          const cached = sessionStorage.getItem(CACHE_KEY_VIDEOS);
+          if (cached) {
+            try {
+              const parsed = JSON.parse(cached);
+              if (Date.now() - parsed.savedAt < CACHE_TTL_MS) return parsed.data;
+            } catch (e) {}
+          }
+        }
+
+        try {
+          const { db, collection, getDocs, query, orderBy, limit } = window.fb;
+          const q = query(collection(db, "videos"), orderBy("createdAt", "desc"), limit(30));
+          const snap = await getDocs(q);
+          const data = snap.docs.map((d) => ({ id: Number(d.id), ...d.data() }));
+
+          sessionStorage.setItem(CACHE_KEY_VIDEOS, JSON.stringify({ savedAt: Date.now(), data }));
+          return data;
+        } catch (error) {
+          console.error("Gagal mengambil data video:", error);
+          const cached = sessionStorage.getItem(CACHE_KEY_VIDEOS);
+          if (cached) {
+            try {
+              return JSON.parse(cached).data;
+            } catch (e) {}
+          }
+          return [];
+        }
+      }
+
+      function getVideos() {
+        return _videosCache;
+      }
+
+      async function muatUlangVideosCache(forceRefresh = false) {
+        _videosCache = await getVideosFromFirestore(forceRefresh);
+      }
       // Jalankan SEKALI setelah Firebase siap: isi cache, baru render ulang pakai FUNGSI RENDER ASLI kamu
       window.addEventListener("firebase-ready", async () => {
         await muatUlangBeritaCache();
@@ -6497,10 +6838,33 @@
         renderBeritaTerbaru();
         if (typeof renderSlider === "function") renderSlider();
         if (typeof renderBeritaPopuler === "function") renderBeritaPopuler();
+
+        // Buka langsung ke halaman detail jika ada #berita/<id> di URL (mis. dari link Copy Link
+        // yang di-paste ulang, atau dibagikan ke orang lain). Baru dicek DI SINI (bukan di
+        // DOMContentLoaded) karena getBerita() baru terisi data asli setelah baris di atas selesai.
+        const matchBeritaAwal = window.location.hash.match(/^#berita\/(\d+)/);
+        if (matchBeritaAwal) {
+          const idBeritaAwal = parseInt(matchBeritaAwal[1], 10);
+          if (getBerita().some((b) => b.id === idBeritaAwal)) showBeritaDetail(idBeritaAwal);
+        }
+        await muatUlangVideosCache();
+        renderVideoTerbaru();
+        renderVideoTrending();
+        renderVideoGrid();
       });
 
       // DAFTAR EMAIL ADMIN YANG DIIZINKAN
       const ADMIN_EMAILS = ["sekitarlembang.web@gmail.com"];
+
+      // Shortcut rahasia buat buka panel admin: Ctrl + Shift + A
+      document.addEventListener("keydown", (e) => {
+        if (e.ctrlKey && e.shiftKey && (e.key === "A" || e.key === "a")) {
+          e.preventDefault();
+          setView("home");
+          showAdmin();
+          closeSidebar();
+        }
+      });
 
       window.addEventListener("firebase-ready", () => {
         const { auth, onAuthStateChanged } = window.fb;
